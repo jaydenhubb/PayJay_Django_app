@@ -1,10 +1,23 @@
 {%extends "base/base.html" %}
-{% block title%}
-Home Page
-{% endblock title%}
+<!-- {% block title%}
+<h1> Hello</h1>
+{% endblock title%} -->
 
-{% block content%}
+{% block body%}
 
-<h1>My Account</h1>
-{% endblock content%}
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+{% else %}
+    <p>Welcome, Guest!</p>
+{% endif %}
 
+{% endblock%}
+
+
+ <!-- {% if request.user.is_authenticated %}
+ <h4>Hello {{request.user.username|title}}</h4>
+ <a href="{% url 'authUser:log-out' %}">Log out</a>
+ {% else %}
+ <a href="{% url 'authUser:register' %}">Sign Up</a>
+ <a href="{% url 'authUser:sign-in' %}">Log In</a>
+ {% endif %}  -->
